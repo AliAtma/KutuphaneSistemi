@@ -1,0 +1,34 @@
+﻿@model AliHaydarAtma.Entites.Model.Musteri
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align: center; background-color: #1CB15F ;color:white;font-family:'Century Gothic';margin:5px">
+    <h2><b>@Model.MusteriAdi&nbsp;@Model.MusteriSoyadi Güncelleme Sayfası </b></h2>
+</div>
+
+
+<div class="form-group" style="margin:5px">
+    @using (Html.BeginForm("Guncelle", "Musteri", FormMethod.Post))
+    {
+        @Html.Label("Musteri Id")
+        @Html.TextBoxFor(m => m.MusteriId, new { @class = "form-control", @readonly = "readonly" })
+        <br />
+        @Html.Label("Musteri Adı")
+        @Html.TextBoxFor(m => m.MusteriAdi, new { @class = "form-control" })
+        <br />
+        @Html.Label("Musteri Soyadı")
+        @Html.TextBoxFor(m => m.MusteriSoyadi, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Cinsiyet")
+        @Html.TextBoxFor(m => m.Cinsiyet, new { @class = "form-control" })
+        <br />
+        <br />
+        @Html.Label("Dogum Tarihi")
+        @Html.TextBoxFor(m => m.DogumTarihi, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-primary" style="background-color: #1CB15F;color:white"> Güncelle </button>
+    }
+</div>

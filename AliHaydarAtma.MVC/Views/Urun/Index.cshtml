@@ -1,0 +1,103 @@
+﻿@using AliHaydarAtma.Entites.Model
+@model List<Urun>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="font-family:'Century Gothic'">
+
+    <div style="text-align: center; color: white; background-color: #1C2E3E;margin-bottom:5px">
+        <h2><b> Urun Listesi </b></h2>
+    </div>
+    <div class="form-group" style="text-align:right;margin:15px">
+        @using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+        {
+            <div><b> Urun Adı : </b> @Html.TextBox("aranacakKelime")&nbsp;<button style="color: white; background-color: #1C2E3E"> Arama yap</button> </div>}
+    </div>
+    <div style="margin:15px">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="text-align: center; background-color: #1C2E0E;color:white">
+                    <th style="width:7%">UrunId</th>
+                    <th>UrunAdi</th>
+                    <th>Kategorisi</th>
+                    <th>UrunStok</th>
+                    <th>UrunFiyat</th>
+                    <th style="width:8%">UrunKodu</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var urn in Model)
+                {
+                    <tr>
+                        <td>@urn.UrunId</td>
+                        <td>@urn.UrunAdi</td>
+                        <td>@urn.Kategori.KategoriAdi</td>
+                        <td>@urn.UrunStok</td>
+                        <td>@urn.UrunFiyat</td>
+                        <td>@urn.UrunKodu</td>
+                        <td>
+                            <a class="btn btn-danger" href="/Urun/Sil/@urn.UrunId"> Sil </a>&nbsp;
+                            <a class="btn btn-primary" href="/Urun/Guncelle/@urn.UrunId"> Güncelle </a>&nbsp;
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#urunEkleModal"> Yeni Urun Ekle</button>
+
+<div class="modal fade" id="urunEkleModal" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                <h4 class="modal-title" id="myModalLabel">Urun Ekle</h4>
+            </div>
+            <form method="post" action="/Urun/Ekle">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>
+                            Urun Adi
+                        </label>
+
+                        <input type="text" name="UrunAdi" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Kategori
+                        </label>
+                        <input type="text" name="KategoriId" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Urun Stok
+                        </label>
+                        <input type="text" name="UrunStok" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Urun Fiyat
+                        </label>
+                        <input type="text" name="UrunFiyat" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Urun Kodu
+                        </label>
+                        <input type="text" name="UrunKodu" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">İptal Et</button>
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

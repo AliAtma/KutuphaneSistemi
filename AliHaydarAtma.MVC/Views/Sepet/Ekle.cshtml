@@ -1,0 +1,27 @@
+﻿@model AliHaydarAtma.Entites.Model.Sepet
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align: center; background-color: #1CB15F ;color:white;font-family:'Century Gothic';margin:5px">
+    <h2><b>Sepet Ekleme</b></h2>
+</div>
+
+<div class="form-group" style="margin:5px">
+    @using (Html.BeginForm("Ekle", "Sepet", FormMethod.Post))
+    {
+        @Html.Label("Musteri Adi")
+        @Html.DropDownListFor(x => x.MusteriId, (List<SelectListItem>)ViewBag.Musteriler, new { @class = "form-control" })
+        <br />
+        <br />
+        @Html.Label("Urun Adi")
+        @Html.DropDownListFor(x => x.UrunId, (List<SelectListItem>)ViewBag.Urunler, new { @class = "form-control" })
+        <br />
+        <br />
+        @Html.Label("Urun Stok")
+        @Html.TextBoxFor(x => x.SepetAdet, new { @class = "form-control" })      
+        <br />
+        <button style="background-color: #1CB15F;color:white"> Ekle </button>
+    }
+</div>

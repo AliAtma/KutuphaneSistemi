@@ -1,0 +1,88 @@
+﻿@using AliHaydarAtma.Entites.Model
+@model List<Musteri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align: center; color: white; background-color: #1C2E3E;margin-bottom:5px">
+    <h2><b> Musteri Listesi </b></h2>
+</div>
+<div style="margin:15px" class="form-group">
+    <table class="table table-bordered">
+        <thead>
+            <tr style="text-align: center; background-color: #1C2E0E;color:white">
+                <th>Musteri Id</th>
+                <th>Musteri Adi</th>
+                <th>Musteri Soyadi</th>
+                <th>Dogum Tarihi</th>
+                <th>Musteri Cinsiyet</th>
+                <th>Durumu</th>
+                <th>Islem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mstr in Model)
+            {
+                <tr>
+                    <td>@mstr.MusteriId</td>
+                    <td>@mstr.MusteriAdi</td>
+                    <td>@mstr.MusteriSoyadi</td>
+                    <td>@mstr.DogumTarihi</td>
+                    <td>@mstr.Cinsiyet</td>
+                    <td>@mstr.MusteriDurumu</td>
+                    <td>
+                        <a class="btn btn-success" href="/Musteri/Guncelle/@mstr.MusteriId"> Guncelle </a>
+                        <a class="btn btn-danger" href="/Musteri/Sil/@mstr.MusteriId"> Sil </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#musteriEkleModal"> Yeni Musteri Ekle</button>
+
+    <div class="modal fade" id="musteriEkleModal" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <h4 class="modal-title" id="myModalLabel">Musteri Ekle</h4>
+                </div>
+                <form method="post" action="/Musteri/Ekle">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>
+                                Musteri Adi
+                            </label>
+
+                            <input type="text" name="MusteriAdi" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Musteri Soyadi
+                            </label>
+                            <input type="text" name="MusteriSoyadi" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Dogum Tarihi
+                            </label>
+                            <input type="text" name="DogumTarihi" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Musteri Cinsiyeti
+                            </label>
+                            <input type="text" name="Cinsiyet" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">İptal Et</button>
+                        <button type="submit" class="btn btn-primary">Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

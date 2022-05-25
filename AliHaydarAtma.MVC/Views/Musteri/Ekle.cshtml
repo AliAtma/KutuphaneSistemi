@@ -1,0 +1,29 @@
+﻿@model AliHaydarAtma.Entites.Model.Musteri
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align: center; background-color: #1CB15F ;color:white;font-family:'Century Gothic';margin:5px">
+    <h2><b>Musteri Ekleme</b></h2>
+</div>
+
+<div class="form-group" style="margin:5px">
+    @using (Html.BeginForm("Ekle", "Musteri", FormMethod.Post))
+    {
+        @Html.Label("Musteri Adı")
+        @Html.TextBoxFor(m => m.MusteriAdi, new { @class = "form-control" })
+        <br />
+        @Html.Label("Musteri Soyadı")
+        @Html.TextBoxFor(m => m.MusteriSoyadi, new { @class = "form-control" })
+                <br />
+        @Html.Label("Dogum Tarihi")
+        @Html.TextBoxFor(m => m.DogumTarihi, new { @class = "form-control" })
+        
+        <br />
+        @Html.Label("Cinsiyet")
+        @Html.TextBoxFor(m => m.Cinsiyet, new { @class = "form-control" })
+        <br />
+        <button style="background-color: #1CB15F;color:white"> Ekle </button>
+    }
+</div>

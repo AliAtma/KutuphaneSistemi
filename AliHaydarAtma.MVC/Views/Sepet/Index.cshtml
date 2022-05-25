@@ -1,0 +1,40 @@
+﻿@using AliHaydarAtma.Entites.Model
+@model List<Sepet>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="text-align: center; color: white; background-color: #1C2E3E;margin-bottom:5px">
+    <h2><b> Sepet Listesi </b></h2>
+</div>
+<div style="margin:15px" class="form-group">
+    <table class="table table-bordered">
+        <thead>
+            <tr style="text-align: center; background-color: #1C2E0E;color:white">
+                <th>Musteri Adi</th>
+                <th>Urun Adi</th>
+                <th>Urun Adet</th>
+                <th>Toplam Fiyat</th>
+                <th>Islem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var spt in Model)
+            {
+                <tr>
+                    <td>@spt.MusteriId</td>
+                    <td>@spt.Urun.UrunAdi</td>
+                    <td>@spt.SepetAdet</td>
+                    <td>@spt.SepetToplam</td>
+                    <td>
+                        <a class="btn btn-success" href="/Sepet/Guncelle/@spt.SepetId"> Guncelle </a>
+                        <a class="btn btn-danger" href="/Sepet/Sil/@spt.SepetId"> Sil </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<a class="btn" href="/Sepet/Ekle/" style="text-align:center; background-color:#1C2E3E;color:white;margin:15px"> Sepet Ekle </a>
+

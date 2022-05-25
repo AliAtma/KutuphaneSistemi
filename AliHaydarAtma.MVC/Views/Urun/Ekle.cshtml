@@ -1,0 +1,37 @@
+﻿@model AliHaydarAtma.Entites.Model.Urun
+
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="font-family:'Century Gothic'">
+
+    <div style="text-align: center; background-color: #1C2E3E;color:white;margin:15px">
+            <h2><b>Urun Ekle</b></h2>
+    </div>
+</div>
+
+<div style="margin:15px">
+    @using (Html.BeginForm("Ekle", "Urun", FormMethod.Post))
+    {
+        @Html.Label("Kategorisi")
+        @Html.DropDownListFor(x => x.KategoriId, (List<SelectListItem>)ViewBag.Kategoriler, new { @class = "form-control" })
+        <br />
+
+        @Html.Label("Urun Adı")
+        @Html.TextBoxFor(x => x.UrunAdi, new { @class = "form-control" })
+        <br />
+
+        @Html.Label("Urun Kodu")
+        @Html.TextBoxFor(x => x.UrunKodu, new { @class = "form-control" })
+        <br />
+        @Html.Label("Urun Fiyati")
+        @Html.TextBoxFor(x => x.UrunFiyat, new { @class = "form-control" })
+        <br />
+        @Html.Label("Urun Stok")
+        @Html.TextBoxFor(x => x.UrunStok, new { @class = "form-control" })
+        <br />
+        <button style="text-align: center; background-color: #1C2E3E; color: white"> <b>Urun ekle</b></button>
+    }
+</div>
